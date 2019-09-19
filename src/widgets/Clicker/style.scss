@@ -1,0 +1,99 @@
+$transitionHover: ease-in 20ms;
+$transitionActive: ease-in 150ms;
+
+.clicker {
+  width: 600px;
+  padding: 20px 30px;
+  @include screen-lt(mobile) {
+    width: 100%;
+  }
+  @include screen-lt(mobile-small) {
+    padding: 20px 0;
+  }
+  &__title {
+    font-size: 18px;
+    @include main-font(600);
+    color: $white;
+    margin-bottom: 5px;
+  }
+  &__button {
+    background-color: #17120f;
+    height: 90px;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid #2d190d;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    outline: 0;
+    position: relative;
+  }
+  &__count {
+    font-size: 55px;
+    @include main-font(600);
+    color: $white;
+  }
+  &__text {
+    font-size: 20px;
+    @include main-font(600);
+    color: $white;
+    @include screen-lt(mobile-small) {
+      position: absolute;
+      top: 90px;
+      left: 0;
+    }
+  }
+  &__img {
+    width: 80px;
+    margin-left: 30px;
+    @include screen-lt(mobile) {
+      margin-left: 0;
+    }
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 280px;
+    outline: none;
+    padding: 10px;
+    animation-name: animate;
+    animation-duration: 1s;
+    user-select: none;
+    animation-iteration-count: infinite;
+    &:active {
+      margin-top: 282px;
+    }
+    &:hover {
+      transition: $transitionHover;
+      background-color: transparent;
+      animation: none;
+    }
+    @include screen-lt(tablet) {
+      width: 80%;
+      margin-top: 100px;
+      &:active {
+        margin-top: 102px;
+      }
+    }
+
+    @include screen-lt(mobile) {
+      width: 80%;
+      margin-top: 80px;
+      &:active {
+        margin-top: 82px;
+      }
+    }
+  }
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

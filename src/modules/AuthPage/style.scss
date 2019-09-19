@@ -1,0 +1,19 @@
+.auth {
+  position: absolute;
+  z-index: 2;
+  top: -72px;
+  width: 100vw;
+  height: calc(100vh + 72px);
+  background-color: $bgDark;
+
+  box-sizing: border-box;
+
+  &__wrap {
+    min-width: 320px;
+    max-width: 350px;
+    padding: 20px 40px;
+    border: 1px solid $orange;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+}

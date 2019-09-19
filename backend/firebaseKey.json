@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dragoneggteamepmire",
+  "private_key_id": "aff605b4533ba7ec6a60d0fab33a8f4e5efa1293",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwr2IAPZL12Ce2\nnYJowicNtbqKHxeWAuBUozxyWgEdlt6qohEgCkyFL0ZKVynbqk+XglYZ664KI7Pk\ndN+y45jHN0oQ80rYq1tXwLbrNFsiLnOad+D3WY3gr9TxlK5Mnm4FWsNusalTUuPy\n567x6DN3xVtxRsyLaspTrWCYBMg0JiV3PeEPtnTFEhHmjOmXI2wfdvvqqrdi1dgk\n00OxWPMjnGcWrNzdTEUGhRq41ZQDZge+qthyXNSuGTpYf8B6Sqn553t9ywyBVuJG\nGd44mvsNctOznrALvmMwCSCMQRzRgtBZyBBOh1ONxzROv02TmSWPmqfMCLzWNz+2\nkMAA8uwRAgMBAAECggEAL/uRO8t9C7LmJhvkfJqtjHWb8UK8Xwrs7U9fbRawUt7U\nHbbhu7fQTCMojavaPEOmVdkZlPSCUVKc2iA7WBOjPAbx4GSSIQF4Tv6RLpMLZN8E\nmiCQQdxaQXi+9dSQ+VHVQzMA/CDXgT9zlFYDFsMepxo72SmHBx27ULo3D1HNJQv6\ncWNdbDjXO8PdIq7IDZbP6Ay3jiiOsIgyJW+opXHchplZnrThFO0kWEQEudN0/fZ4\nAwLTT4/1v7+MpnR893ViSaxqJYicFPabtohlDvylTzjQvCaJYzZarrlO2CLG3IFm\nSHE9ZD4BAW6kKodaOd5JugrrGw8Us8fkYTgHNEdMOQKBgQDzgWLC4R3VYyK6WJI7\nQ2V1R2Fgs0W72ouq3PDD9Tsc8INjjmcAlTs2gZMyy6tCYAX9fAllzZhXDpmrWpxK\n2zXaivZSeFzTPkZ8OvsTKiQu/NkeWRZpUTHosnTgSpcwe/EIiUdfXdAPWKyibysk\njeFuy4qcgZ/MsSnlTwztVuEhIwKBgQC5wEPnyf5D5NbKYr5CVFVuY3PwnSSIGjai\nVxOh3Z+FIHVTKMmAqRhuftdPjGO6A6Nid93pecVdF2kOi7k8xy2GaCSR6E6kipHQ\nF4vTuW6m14Y7zEni/wTBh7vtYs8iOcbJivNGDG1ugOHCnfevJYbfd4DwbB9a1IYl\nBmtkth2jOwKBgB+usvnmLmqINomGYqhhUX8b5XieerFBczCtBIqKisFuLbozWgWC\nZSznWQ6f302Ijt73V4WuZWbWWHoqFPHMacpgkEIUtQcrMCKTzf0lW4XdkiZXswnK\n7bJ4HardKaS+S5MvwWCQJTUJ9ZRA4J0l9LHku8k3OGJ6npfeXDE5P5t/AoGBAJ0I\nsx/I/8GMPB37XpeazmK1h3Xak+DQMHIMJZfJUivs5eM47ylrSzFW4FXq/QBsRPth\nFOVmQflSakmWzDJavN0NPCVx/NJUJ7OBxH9pG+fG+z+glLJoIDAwvSqSR0TLDYij\nhMkqhnVOVg3/GD8k/aH8WLBo6BUU6JdyluYcpG+zAoGBAMIjoM6DYM6iuQo1lEDs\nW4GjN/Za20tJp8tpNWnAja2nlYe3AVmm0AFOcD7qodiBW5YN8OId+FxIDbyly6Df\ndJhqEgdu0uQTDdae8Uhyox7L6SSIeTntT6J8rTKngCE2EHM9D02o3iTH+QcqJ/z6\nZsJMVbHRay6aTwp9CDsFW47h\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-tw5g2@dragoneggteamepmire.iam.gserviceaccount.com",
+  "client_id": "117435233185950668735",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-tw5g2%40dragoneggteamepmire.iam.gserviceaccount.com"
+}

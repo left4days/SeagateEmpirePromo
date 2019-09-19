@@ -1,0 +1,32 @@
+.app {
+  &_indev {
+    display: flex;
+    flex-direction: column;
+    padding-top: 40vh;
+    align-items: center;
+    color: white;
+
+    > * {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.footer {
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  background-color: $black;
+  padding: 20px 0;
+  a {
+    font-size: 16px;
+    color: $white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+#root {
+  position: relative;
+}

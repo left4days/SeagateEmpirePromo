@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/apple-touch-icon-114x114.png" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta name="theme-color" content="#000000" />
+    <meta itemProp="name" content="Сокровище дракона | Team Empire и Seagate" />
+    <meta content="%PUBLIC_URL%/preview.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Сокровище дракона | Team Empire и Seagate" />
+    <meta name="twitter:description" content="Прими участие и выиграй крутые призы от Team Empire и Seagate!" />
+    <meta name="twitter:image:src" content="%PUBLIC_URL%/preview.png" />
+    <meta property="vk:image" content="%PUBLIC_URL%/preview.png" />
+    <meta name="og:title" content="Сокровище дракона | Team Empire и Seagate" />
+    <meta name="og:type" content="website" />
+    <meta name="og:locale" content="ru" />
+    <meta property="og:image" content="%PUBLIC_URL%/preview.png" />
+    <meta name="og:url" content="https://ssd.empire.gg/" />
+    <meta name="og:site_name" content="Empire" />
+    <!--<meta name="fb:admins" content="367370773695386" />-->
+    <meta name="fb:app_id" content="2318937365021350" />
+    <meta name="og:description" content="Прими участие и выиграй крутые призы от Team Empire и Seagate!" />
+    <meta property="og:image:secure_url" content="%PUBLIC_URL%/preview.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Сокровище дракона | Team Empire и Seagate</title>
+  </head>
+  <body>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '2202030140061966',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v3.2'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(53569510, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/53569510" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

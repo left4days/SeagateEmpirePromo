@@ -1,0 +1,39 @@
+.admin {
+  &__row {
+    padding: 20px;
+    border: 1px solid $white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    &:first-child {
+      background-color: $orange;
+      margin-bottom: 20px;
+      cursor: default;
+    }
+
+    &_item {
+      color: $white;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:first-child {
+        justify-content: flex-start;
+      }
+      &:last-child {
+        justify-content: flex-end;
+      }
+      @include screen-lt(tablet) {
+        &:nth-child(2), &:nth-child(4) {
+          display: none;
+        }
+      }
+    }
+  }
+  &__image {
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

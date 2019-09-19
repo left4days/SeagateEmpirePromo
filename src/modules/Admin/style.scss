@@ -1,0 +1,34 @@
+.admin {
+  background-color: #13023c;
+  &__container {
+    @include container-size();
+  }
+
+  &__rejected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    min-height: 70vh;
+  }
+
+  &__header {
+    padding: 40px 0;
+  }
+
+  &__header-summary {
+    flex: 1 1 auto;
+    width: auto;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+
+    p {
+      margin-left: 15px;
+    }
+  }
+
+  .ux-button {
+    width: auto;
+  }
+}

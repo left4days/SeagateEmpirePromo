@@ -1,0 +1,62 @@
+@mixin spinner($size) {
+  width: $size;
+  height: $size;
+}
+
+.loader {
+  &__item {
+    display: inline-block;
+    animation: spinner-animate 1.2s linear infinite;
+
+    &:after {
+      content: ' ';
+      display: block;
+      margin: -5px;
+      border-radius: 50%;
+    }
+
+    &_size {
+      &_s {
+        @include spinner(30px);
+        &:after {
+          @include spinner(30px);
+        }
+      }
+      &_m {
+        @include spinner(60px);
+        &:after {
+          @include spinner(60px);
+        }
+      }
+      &_l {
+        @include spinner(90px);
+        &:after {
+          @include spinner(90px);
+        }
+      }
+    }
+    &_color {
+      &_white {
+        &:after {
+          border: 5px solid $white;
+          border-color: $white transparent $white transparent;
+        }
+      }
+      &_orange {
+        &:after {
+          border: 5px solid $orange;
+          border-color: $orange transparent $orange transparent;
+        }
+      }
+    }
+  }
+}
+
+@keyframes spinner-animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

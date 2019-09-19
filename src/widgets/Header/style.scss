@@ -1,0 +1,35 @@
+.header {
+  background-color: $black;
+  color: $white;
+  height: 72px;
+
+  &__container {
+    z-index: 4;
+    @include container-size();
+    > * {
+      width: 100%;
+      height: 44px;
+    }
+  }
+
+  &__logo {
+    height: 40px;
+    &_double {
+      img {
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+      @include screen-lt(tablet) {
+        display: none;
+      }
+    }
+    &_container {
+      display: flex;
+      align-items: center;
+      @include screen-lt(tablet) {
+        align-items: flex-start;
+      }
+    }
+  }
+}

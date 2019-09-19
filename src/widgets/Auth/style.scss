@@ -1,0 +1,82 @@
+@mixin pseudo($left, $right) {
+  content: '';
+  top: 6px;
+  left: $left;
+  right: $right;
+  position: absolute;
+  height: 2px;
+  width: 110px;
+  background-color: $orange;
+  @include screen-lt(mobile) {
+    width: 90px;
+  }
+}
+
+.social {
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $orange;
+  border-radius: 50%;
+  margin-right: 15px;
+  outline: none;
+  cursor: pointer;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    opacity: .7;
+  }
+
+  &__container {
+    margin: 20px 0;
+  }
+
+  img {
+    width: 13px;
+    height: 13px;
+    min-width: 13px;
+    min-height: 13px;
+  }
+}
+
+.auth {
+  &__or {
+    position: relative;
+    &:before {
+      @include pseudo(0, auto);
+    }
+    &:after {
+      @include pseudo(auto, 0);
+    }
+  }
+  &__link {
+    color: $brown;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  &__button {
+    margin-top: 20px;
+    &_more {
+      text-decoration: underline;
+      color: $brown;
+      background-color: transparent;
+      text-transform: none;
+      width: auto;
+      &:hover {
+        background-color: transparent;
+        color: $white;
+        transition: .1s;
+      }
+    }
+  }
+  &__error {
+    color: #FF2120;
+    font-size: 12px;
+    padding-top: 10px;
+  }
+}

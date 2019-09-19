@@ -1,0 +1,34 @@
+.home {
+  z-index: 2;
+  display: block;
+  min-height: 1860px;
+  justify-content: space-between;
+  height: 100%;
+  @include bgImage('../../statics/bg/1.jpg');
+  &__background {
+    &_1 {
+      background-image: url('../../statics/bg/1.jpg');
+    }
+    &_2 {
+      background-image: url('../../statics/bg/2.jpg');
+    }
+    &_3 {
+      background-image: url('../../statics/bg/3.jpg');
+    }
+    &_4 {
+      background-image: url('../../statics/bg/4.jpg');
+    }
+    &_5 {
+      background-image: url('../../statics/bg/5.jpg');
+    }
+  }
+
+  &__container {
+    @include container-size;
+    height: 100%;
+  }
+}
+
+.app {
+  @include bgImage('../../statics/bg/1.jpg');
+}

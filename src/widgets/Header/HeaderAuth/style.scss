@@ -1,0 +1,95 @@
+.dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 150px;
+  display: flex;
+  &:after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: calc(150px / 2 - 2.5px);
+    background: $white;
+    width: 10px;
+    z-index: 1;
+    height: 10px;
+    transform: rotate(45deg);
+  }
+  &__button {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    z-index: 2;
+    border: none;
+    font-size: 14px;
+    color: $bgDark;
+    width: 100%;
+    cursor: pointer;
+    &:first-child {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: 1px solid $grey;
+    }
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &:hover {
+      background-color: #ededed;
+      transition: .1s;
+    }
+  }
+}
+
+.header {
+  &__authorized {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    @include screen-lt(mobile) {
+      p {
+        font-size: 0;
+      }
+    }
+  }
+
+  &__user {
+    position: relative;
+    user-select: none;
+
+    &:before {
+      content: '';
+      position: absolute;
+      border-radius: 30px;
+      top: -12px;
+      left: -35px;
+      background-image: url('../../../statics/default_user_icon.png');
+      width: 25px;
+      height: 25px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      @include screen-lt(mobile) {
+        width: 35px;
+        height: 35px;
+        top: -20px;
+      }
+    }
+  }
+  &__mobile {
+    @include screen-lt(mobile) {
+      flex-direction: column;
+      align-items: flex-end !important;
+      button {
+        &:first-child {
+          margin-right: 0;
+          margin-bottom: 5px;
+        }
+        &:last-child {
+          width: 130px;
+        }
+      }
+    }
+  }
+}
