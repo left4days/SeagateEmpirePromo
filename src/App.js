@@ -14,12 +14,13 @@ import { signOutUser } from 'widgets/Auth/firebase-configuration';
 import style from './style.scss';
 
 const config = {
-    apiKey: 'AIzaSyDDaaOyfmalL4ZzY1tlTneHbmdZ29tkxgc',
-    authDomain: 'dragoneggteamepmire.firebaseapp.com',
-    databaseURL: 'https://dragoneggteamepmire.firebaseio.com',
-    projectId: 'dragoneggteamepmire',
-    storageBucket: 'dragoneggteamepmire.appspot.com',
-    messagingSenderId: '201187011326',
+    apiKey: "AIzaSyCpiOLPsXlXMHrzxrzzcs4bpA6z8wkxWFQ",
+    authDomain: "seagateempirepromo.firebaseapp.com",
+    databaseURL: "https://seagateempirepromo.firebaseio.com",
+    projectId: "seagateempirepromo",
+    storageBucket: "seagateempirepromo.appspot.com",
+    messagingSenderId: "192211805737",
+    appId: "1:192211805737:web:3559f5439a9e6e68dbde38"
 };
 
 firebase.initializeApp(config);

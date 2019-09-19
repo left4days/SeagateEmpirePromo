@@ -6,7 +6,7 @@ const serviceAccount = require('./firebaseKey.json');
 
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount),
-    databaseURL: 'https://dragoneggteamepmire.firebaseio.com',
+    databaseURL: 'https://seagateempirepromo.firebaseio.com',
 });
 
 const app = require('./server');
