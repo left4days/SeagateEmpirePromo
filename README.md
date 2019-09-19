@@ -1,4 +1,4 @@
-## Dragon Egg project for Team Empire
+## Seagate Promo website for Team Empire
 based on [Create React App](https://facebook.github.io/create-react-app/)
 
 node -v 10.6.0
