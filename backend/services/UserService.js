@@ -1,14 +1,9 @@
 const firebaseAdmin = require('firebase-admin');
 const get = require('lodash/get');
-const mergeDeep = require('lodash/merge');
 const json2csv = require('json2csv');
 const db = firebaseAdmin.database();
-const userRef = db.ref('server/saving-data/fireblog/users');
-const appStateRef = db.ref('server/saving-data/fireblog/appState');
-
-const ClickService = require('../services/ClickService');
-
-const clickService = new ClickService();
+const userRef = db.ref('users');
+const appStateRef = db.ref('appState');
 
 const randomInteger = (min, max) => {
     let rand = min + Math.random() * (max - min);
@@ -45,11 +40,8 @@ class UserService {
             result = snap.val();
         });
 
-        const clicks = await clickService.getUserClicksById(uid);
-
         return {
             ...result,
-            clicks,
             uid,
         };
     }
@@ -72,13 +64,6 @@ class UserService {
         }
     }
 
-    async getTopClickers(params) {
-        const { limit = 10 } = params;
-
-        const topClickers = await clickService.getTopClickers(limit);
-        return await Promise.all(topClickers.map(({ uid }) => this.getUserById(uid)));
-    }
-
     async generateWinners(params) {
         const { limit = 300 } = params;
 
@@ -89,7 +74,6 @@ class UserService {
                 participants = Object.entries(snapshot.val()).map(([uid]) => {
                     return uid;
                 });
-                // .filter(({ data }) => data.clicks > 10);
             });
         } catch (err) {
             console.log('ERROR DB GET TOP CLICKERS');
@@ -117,6 +101,43 @@ class UserService {
         return await Promise.all(winners.map(uid => this.getUserById(uid)));
     }
 
+    async generateTopWinner(params) {
+        const { limit = 1 } = params;
+
+        let participants = [];
+        let winners = [];
+        try {
+            await userRef.once('value', snapshot => {
+                participants = Object.entries(snapshot.val()).map(([uid]) => {
+                    return uid;
+                });
+            });
+        } catch (err) {
+            console.log('ERROR DB GET TOP WINNERS');
+            console.log(err);
+
+            return participants;
+        }
+
+        const participantsNumber = participants.length - 1;
+        const winnersIndexes = getUniqIndexes({ from: 0, to: participantsNumber, limit });
+
+        for (let idx of winnersIndexes) {
+            winners.push(participants[idx]);
+        }
+
+        try {
+            await appStateRef.update({
+                mainWinners: winners,
+            });
+        } catch (err) {
+            console.log('ERROR DB UPDATE WINNERS LIST', winners);
+            console.log(err);
+        }
+
+        return await Promise.all(winners.map(uid => this.getUserById(uid)));
+    }
+
     async getWinners(params) {
         const { limit = 300 } = params;
         let winnerList = [];
@@ -135,6 +156,24 @@ class UserService {
         return await Promise.all(winnerList.map(uid => this.getUserById(uid)));
     }
 
+    async getTopWinners(params) {
+        const { limit = 1 } = params;
+        let mainWinners = [];
+
+        try {
+            await appStateRef.once('value', snapshot => {
+                mainWinners = get(snapshot.val(), 'mainWinners', []);
+            });
+        } catch (err) {
+            console.log('ERROR DB GET WINNERS');
+            console.log(err);
+
+            return [];
+        }
+
+        return await Promise.all(mainWinners.map(uid => this.getUserById(uid)));
+    }
+
     async getAllUsersInCSV(params) {
         const { limit } = params;
 
@@ -151,17 +190,15 @@ class UserService {
             return participants;
         }
 
-        const clicks = (await clickService.getAllUsersClicks()) || {};
-
         for (const uid in participants) {
-            if (participants[uid] && clicks[uid]) {
-                participants[uid] = { ...participants[uid], clicks: clicks[uid] };
+            if (participants[uid]) {
+                participants[uid] = { ...participants[uid] };
             }
         }
 
         const resJSON = Object.entries(participants).map(([uid, data], i) => ({ idx: i + 1, uid, ...data }));
 
-        const fields = ['idx', 'email', 'registerBy', 'uid', 'login', 'clicks'];
+        const fields = ['idx', 'email', 'registerBy', 'uid', 'login'];
         const opts = { fields };
 
         try {

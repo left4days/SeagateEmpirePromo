@@ -1,6 +1,6 @@
 const firebaseAdmin = require('firebase-admin');
 const db = firebaseAdmin.database();
-const appStateRef = db.ref('server/saving-data/fireblog/appState');
+const appStateRef = db.ref('appState');
 
 const UserService = require('../services/UserService');
 
@@ -26,27 +26,27 @@ class AppStateService {
 
     async getAppState() {
         let state = 'ACTIVE';
-        let main_winner = '';
-        let product_link = '';
+        let main_winners = '';
         let main_winner_photo = '';
 
         await appStateRef.once('value', snap => {
-            const { actionState, mainWinner = '', productLink = '', mainWinnerPhoto } = snap.val() || {};
+            const { actionState, mainWinners = [], mainWinnerPhoto } = snap.val() || {};
 
             if (typeof actionState === 'string') {
                 state = actionState;
-                main_winner = mainWinner;
-                product_link = productLink;
+                main_winners = mainWinners;
                 main_winner_photo = mainWinnerPhoto;
             }
         });
 
-        if (main_winner) {
-            main_winner = await userService.getUserById(main_winner);
+        if (main_winners) {
+            let id = '';
+            main_winners.map(item => (id = item));
+            main_winners = await userService.getUserById(id);
         }
-        const { login = '', clicks = 0 } = main_winner;
+        const { login = '' } = main_winners;
 
-        return { state, mainWinnerData: { login, main_winner_photo, clicks }, product_link };
+        return { state, mainWinnerData: { login, main_winner_photo } };
     }
 
     async checkDevAccess(password) {

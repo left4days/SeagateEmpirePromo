@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import firebase from 'firebase';
 import get from 'lodash/get';
+import cx from 'classnames';
 
 import { getFirebaseHeaderToken } from 'widgets/requestsHelpers';
 import { Button } from 'ui/Button';
@@ -41,7 +42,6 @@ function Table({ text, onClick, buttonText, data }) {
                         login: 'LOGIN',
                         email: 'EMAIL',
                         registerBy: 'REGISTERED BY',
-                        clicks: 'CLICKS',
                         contact: 'CONTACT',
                     }}
                 />
@@ -58,11 +58,10 @@ class AdminPanel extends React.PureComponent {
         super(props);
 
         this.state = {
-            topClickers: [],
             winners: [],
+            mainWinners: [],
             isUserAdmin: false,
             actionState: 'ACTIVE',
-            clicks: 0,
             users: 0,
         };
     }
@@ -71,9 +70,7 @@ class AdminPanel extends React.PureComponent {
         firebase.auth().onAuthStateChanged(() => {
             this.getCurrentAppState();
             this.getCurrentWinners();
-            this.getSummaryInfo();
-
-            return this.updateTop10();
+            this.getCurrentTopWinners();
         });
     };
 
@@ -84,17 +81,17 @@ class AdminPanel extends React.PureComponent {
         });
     };
 
+    getCurrentTopWinners = async () => {
+        const options = await getFirebaseHeaderToken();
+        axios.get('/api/v1/user/winners/top/1', options).then(res => {
+            this.setState({ mainWinners: res.data.data, isUserAdmin: true });
+        });
+    };
+
     getCurrentAppState = async () => {
         axios.get('/api/v1/appState/state').then(res => {
             const { state, mainWinnerEmail } = get(res, 'data.data', {});
             this.setState({ actionState: state, mainWinnerEmail });
-        });
-    };
-
-    updateTop10 = async () => {
-        const options = await getFirebaseHeaderToken();
-        axios.get('/api/v1/user/top/30', options).then(res => {
-            this.setState({ topClickers: res.data.data, isUserAdmin: true });
         });
     };
 
@@ -105,13 +102,10 @@ class AdminPanel extends React.PureComponent {
         });
     };
 
-    getSummaryInfo = async () => {
+    determineTopWinner = async () => {
         const options = await getFirebaseHeaderToken();
-        axios.get('/api/v1/clicks', options).then(res => {
-            const { users, clicks } = get(res, 'data.data', false);
-            if (users && clicks) {
-                this.setState({ users, clicks });
-            }
+        axios.get('/api/v1/user/winners/top/create/1', options).then(res => {
+            this.setState({ mainWinners: res.data.data });
         });
     };
 
@@ -138,40 +132,49 @@ class AdminPanel extends React.PureComponent {
     };
 
     render() {
-        const { isUserAdmin, actionState, winners, topClickers, users, clicks } = this.state;
+        const { isUserAdmin, actionState, winners, users, mainWinners } = this.state;
+        const { user } = this.props;
 
-        if (!isUserAdmin) {
-            return <Title containerClassName={style.admin__rejected}>You have no permissions to see this page</Title>;
+        if (user === 'loading' || !isUserAdmin) {
+            return (
+                <Column className={cx(style.admin, style.admin_loading)}>
+                    <Loader />
+                </Column>
+            );
         }
 
-        const maxCapable = ((6 * (Date.now() - 1562011200000)) / 1000).toFixed(0);
-        const real = (0.05 * maxCapable).toFixed(0);
+        // if (!isUserAdmin) {
+        //     return (
+        //         <Column className={style.admin}>
+        //             <Title containerClassName={style.admin__rejected}>You have no permissions to see this page</Title>
+        //         </Column>
+        //     );
+        // }
 
         return (
             <Column className={style.admin}>
                 <Column className={style.admin__container}>
                     <Row className={style.admin__header}>
                         <SwitchActionStateButton actionState={actionState} onClick={this.switchAppState} />
-                        <Button style="void" margin="left" onClick={this.getAllUsers}>
+                        <Button size="m" margin="left" onClick={this.getAllUsers}>
                             Выгрузить полный список участников
                         </Button>
                         <Row jc="flex-end" className={style['admin__header-summary']}>
                             <p>Участников: {users}</p>
-                            <p>Кликов: {clicks}</p>
                         </Row>
                     </Row>
                     <Column>
+                        <Table
+                            text="Главный победитель"
+                            onClick={this.determineTopWinner}
+                            buttonText="Определить"
+                            data={mainWinners}
+                        />
                         <Table
                             text="30 победителей"
                             onClick={this.determineWinners}
                             buttonText="Определить"
                             data={winners}
-                        />
-                        <Table
-                            text={`Топ-30 кликеров: max ${maxCapable}, real ${real}`}
-                            onClick={this.updateTop10}
-                            buttonText="Обновить"
-                            data={topClickers}
                         />
                     </Column>
                 </Column>

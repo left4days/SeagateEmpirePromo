@@ -1,7 +1,18 @@
 .description {
-  font-size: 12px;
-  color: $brown;
-  @include main-font(500);
+  color: $white;
+  @include accent-font(500);
   @include base-aligns();
   @include base-margins();
+  @include base-weight();
+  &__size {
+    &_l {
+      font-size: 38px;
+    }
+    &_m {
+      font-size: 16px;
+    }
+    &_s {
+      font-size: 12px;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 $transitionHover: ease-in 200ms;
 $transitionActive: ease-in 150ms;
 
-$btn-void: $orange, $white, #ff5100d9, $white, #ff5100d1, $white, $grey, $white;
+$btn-void: linear-gradient(to top, #3eb4f8, #3e6ef8), $white, linear-gradient(to top, #3596ce, #355fd8), $white, linear-gradient(to top, #29aefb, #2f63f9), $white, $grey, $white;
 $btn-fill: transparent, $white, #ff510047, $white, transparent, $white, $grey, $white;
 @mixin btn-style(
   $colorBgDefault,
@@ -38,7 +38,8 @@ $btn-fill: transparent, $white, #ff510047, $white, transparent, $white, $grey, $
   cursor: pointer;
   font-size: 12px;
   border-radius: 5px;
-  border: none;
+  border: 2px solid #065baa;
+  @include main-font(600);
   text-transform: uppercase;
   &:focus {
     outline: none;
@@ -58,9 +59,9 @@ $btn-fill: transparent, $white, #ff510047, $white, transparent, $white, $grey, $
     }
     &_fill {
       @include btn-style($btn-fill...);
-      border: 1px solid $orange;
+      border: 1px solid $blue;
       &:hover {
-        border: 1px solid $orange;
+        border: 1px solid $blue;
       }
     }
   }

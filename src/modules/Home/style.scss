@@ -1,34 +1,33 @@
 .home {
-  z-index: 2;
-  display: block;
-  min-height: 1860px;
-  justify-content: space-between;
-  height: 100%;
-  @include bgImage('../../statics/bg/1.jpg');
-  &__background {
-    &_1 {
-      background-image: url('../../statics/bg/1.jpg');
-    }
-    &_2 {
-      background-image: url('../../statics/bg/2.jpg');
-    }
-    &_3 {
-      background-image: url('../../statics/bg/3.jpg');
-    }
-    &_4 {
-      background-image: url('../../statics/bg/4.jpg');
-    }
-    &_5 {
-      background-image: url('../../statics/bg/5.jpg');
-    }
+  background-image: url('../../statics/main__bg.jpg');
+  padding-top: 170px;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+  position: relative;
+  @include screen-lt(mobile) {
+    background-image: none;
   }
-
-  &__container {
-    @include container-size;
-    height: 100%;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-image: url('../../statics/image_homepage_drakon.png');
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 650px;
+    z-index: 0;
+    height: 685px;
+    @include screen-lt(mobile) {
+      width: 100%;
+      //height: 100%;
+    }
   }
 }
 
-.app {
-  @include bgImage('../../statics/bg/1.jpg');
+.container {
+  @include container-size();
+  z-index: 2;
 }

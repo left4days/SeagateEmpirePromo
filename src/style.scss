@@ -12,12 +12,27 @@
   }
 }
 
+.loading__app {
+  height: 100vh;
+  .header__logo {
+    margin-bottom: 40px;
+  }
+}
+
 .footer {
   z-index: 2;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   text-align: center;
-  background-color: $black;
+  background-color: rgba(11, 14, 19, 0.85);
   padding: 20px 0;
+  p {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
   a {
     font-size: 16px;
     color: $white;

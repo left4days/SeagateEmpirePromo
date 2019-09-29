@@ -63,5 +63,17 @@
       "validationsError": "Формат Email не верен",
       "autoComplete": "email"
     }
+  ],
+  "error": [
+    {
+      "type": "text",
+      "id": "text",
+      "name": "text",
+      "margin": "top_x2",
+      "placeholder": "",
+      "validations": "",
+      "validationsError": "",
+      "autoComplete": ""
+    }
   ]
 }

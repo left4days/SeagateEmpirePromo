@@ -20,13 +20,13 @@ import axios from 'axios/index';
 
 function getTitle(authType) {
     switch (authType) {
-        case 'auth':
-        default:
-            return { title: 'Регистрация', button: 'Зарегистрироваться' };
         case 'login':
             return { title: 'Авторизация', button: 'Войти' };
         case 'reset':
             return { title: 'Восстановить пароль', button: 'Восстановить' };
+        case 'auth':
+        default:
+            return { title: 'Регистрация', button: 'Зарегистрироваться' };
     }
 }
 
@@ -59,21 +59,23 @@ function BottomPanel(props) {
     }
 }
 function AuthHeader({ authType }) {
-    if (authType === 'reset') {
-        return <Title align="center">{getTitle(authType).title}</Title>;
+    switch (authType) {
+        case 'reset':
+            return <Title align="center">{getTitle(authType).title}</Title>;
+        default:
+            return (
+                <Column>
+                    <Title align="center">{getTitle(authType).title}</Title>
+                    <Description margin="top_x2" align="center">
+                        с помощью аккаунта в соц. сетях
+                    </Description>
+                    <AuthSocial />
+                    <Description align="center" margin="bottom_x2" className={style.auth__or}>
+                        или
+                    </Description>
+                </Column>
+            );
     }
-    return (
-        <Column>
-            <Title align="center">{getTitle(authType).title}</Title>
-            <Description margin="top_x2" align="center">
-                с помощью аккаунта в соц. сетях
-            </Description>
-            <AuthSocial />
-            <Description align="center" margin="bottom_x2" className={style.auth__or}>
-                или
-            </Description>
-        </Column>
-    );
 }
 
 function ErrorText({ error }) {
@@ -106,7 +108,6 @@ class Auth extends React.Component {
     };
 
     componentDidMount() {
-        const { authType } = this.props;
         this.tryRegisterID = setTimeout(() => {
             ym(53569510, 'reachGoal', 'registration_try');
         }, 5000);
@@ -117,8 +118,13 @@ class Auth extends React.Component {
     }
 
     onSubmit = () => {
-        const { authType = 'auth' } = this.props;
+        const { authType = 'auth', onSubmit } = this.props;
         const model = this.form.getModel();
+
+        if (onSubmit instanceof Function) {
+            return onSubmit(model);
+        }
+
         const { login, registerBy = 'email', email } = model;
 
         getAuthAction(authType, model)

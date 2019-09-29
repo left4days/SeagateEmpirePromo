@@ -1,8 +1,6 @@
 import React from 'react';
 import { Row } from 'ui/Layout';
 import { signWithSocial } from './firebase-configuration';
-import fbIcon from 'statics/social/fb.svg';
-import twIcon from 'statics/social/tw.svg';
 import googleIcon from 'statics/social/google.svg';
 import vkIcon from 'statics/social/vk.svg';
 

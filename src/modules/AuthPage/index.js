@@ -1,5 +1,5 @@
 import React from 'react';
-import { Column, Row } from 'ui/Layout';
+import { Row } from 'ui/Layout';
 import { Auth } from 'widgets/Auth';
 
 import style from './style.scss';

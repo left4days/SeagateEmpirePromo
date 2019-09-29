@@ -26,12 +26,27 @@ export function maxLength(value, number) {
     return value.toString().length <= number;
 }
 
+export function notEmptyStr(value) {
+    if (!value) return false;
+    return /^\S+$/.test(value.toString());
+}
+
 Formsy.addValidationRule('isLogin', function(values, value) {
     return onlyLettersAndNumbers(value) && minLength(value, 4) && maxLength(value, 16);
 });
 
 Formsy.addValidationRule('isPassword', function(values, value) {
     return oneLetterOneNumberAtLeast(value) && minLength(value, 8) && allLettersIsLatin(value);
+});
+
+Formsy.addValidationRule('isPromoCode', function(values, value) {
+    return (
+        minLength(value, 14) &&
+        allLettersIsLatin(value) &&
+        maxLength(value, 14) &&
+        oneLetterOneNumberAtLeast(value) &&
+        notEmptyStr(value)
+    );
 });
 
 export function getValidationForField(validation) {
@@ -42,5 +57,7 @@ export function getValidationForField(validation) {
             return 'isLogin';
         case 'password':
             return 'isPassword';
+        case 'promo':
+            return 'isPromoCode';
     }
 }

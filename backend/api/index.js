@@ -3,7 +3,7 @@ const router = express.Router();
 const { auth } = require('firebase-admin');
 
 const userApi = require('./user');
-const clicksApi = require('./clicks');
+const promoCodeApi = require('./promoCode');
 const appStateApi = require('./appState');
 
 const authService = auth();
@@ -24,7 +24,7 @@ function createRoutes(route) {
 
 function applyRoutes(app) {
     createRoutes(userApi, router);
-    createRoutes(clicksApi, router);
+    createRoutes(promoCodeApi, router);
     createRoutes(appStateApi, router);
 
     router.get('/api/*', (req, res, next) => {

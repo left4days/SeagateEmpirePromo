@@ -31,7 +31,9 @@ class DevelopTower extends React.PureComponent {
                 <Formsy onValidSubmit={this.onSubmit} ref={this.formRef}>
                     <Input required type="text" name="devPassword" />
                 </Formsy>
-                <Button onClick={this.onSubmit}>Отправить</Button>
+                <Button size="m" onClick={this.onSubmit}>
+                    Отправить
+                </Button>
             </div>
         );
     }

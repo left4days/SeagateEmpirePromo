@@ -41,7 +41,7 @@ function Input({
                 className={className}
                 placeholder={placeholder}
                 placeholderChar={'\u2000'}
-                onChange={e => onChange(e.target.value)}
+                onChange={onChange}
             />
         );
     }

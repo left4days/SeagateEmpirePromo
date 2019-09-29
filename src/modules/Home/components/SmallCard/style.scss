@@ -1,0 +1,171 @@
+.card {
+  width: 100%;
+  border-radius: 5px;
+  height: 410px;
+  position: relative;
+  -webkit-background-size: cover;
+  background-size: cover;
+  margin: 0 15px;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
+    left: 0;
+    @include screen-lt(desktop-small) {
+      -webkit-background-size: cover;
+      background-size: cover;
+    }
+    @include screen-lt(mobile) {
+      -webkit-background-size: contain;
+      background-size: contain;
+    }
+  }
+  @include screen-lt(mobile) {
+    margin: 40px 0;
+    height: 500px;
+  }
+  @include screen-lt(mobile-small) {
+    height: 300px;
+  }
+  &_1 {
+    background-image: url('../../../../statics/image_1card_background.jpg');
+    -webkit-background-size: cover;
+    background-size: cover;
+    &:after {
+      background-image: url('../../../../statics/image_1card_.png');
+      width: 100%;
+      height: calc(100% + 30px);
+      top: -30px;
+    }
+    .card__content {
+      margin-left: 35%;
+      @include screen-lt(desktop-small) {
+        margin-left: 30%;
+      }
+      @include screen-lt(tablet) {
+        margin-left: 20px;
+      }
+      @include screen-lt(mobile) {
+        margin-left: 40%;
+      }
+    }
+  }
+  &_2 {
+    background-image: url('../../../../statics/image_2card_background.jpg');
+    &:after {
+      background-image: url('../../../../statics/image_2card.png');
+      width: 100%;
+      height: 100%;
+    }
+    .card__content {
+      margin-left: 45%;
+      @include screen-lt(desktop-small) {
+        margin-left: 35%;
+      }
+      @include screen-lt(tablet) {
+        margin-left: 20px;
+      }
+      @include screen-lt(mobile) {
+        margin-left: 53%;
+      }
+      @include screen-lt(mobile-small) {
+        margin-left: 49%;
+      }
+    }
+  }
+  &_3 {
+    background-image: url('../../../../statics/image_3card_background.jpg');
+    &:after {
+      background-image: url('../../../../statics/image_3card.png');
+      width: calc(100%);
+      background-position: center;
+      height: 100%;
+      @include screen-lt(desktop-small) {
+        -webkit-background-size: contain;
+        background-size: contain;
+      }
+    }
+    .card__content {
+      margin-left: 45%;
+      &_1 {
+        margin-left: 20px;
+      }
+      &_2 {
+        bottom: 50px;
+        top: auto;
+      }
+    }
+  }
+  &__description {
+    z-index: 2;
+  }
+  &__title {
+    z-index: 2;
+  }
+  &__inner {
+    z-index: 2;
+    padding: 40px;
+    height: 100%;
+    justify-content: flex-end;
+    @include screen-lt(desktop-small) {
+      padding: 40px 20px;
+    }
+  }
+  &__content {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: auto;
+    @include screen-lt(desktop-small) {
+      h2 {
+        font-size: 25px;
+      }
+    }
+    @include screen-lt(mobile) {
+      h2 {
+        font-size: 6vw
+      }
+      p {
+        font-size: 4vw;
+      }
+    }
+  }
+  &__label {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -60px;
+    font-size: 30px;
+    -webkit-background-size: cover;
+    z-index: 3;
+    background-size: cover;
+    @include main-font(600);
+    color: $white;
+    right: -30px;
+    background-image: url('../../../../statics/icon_discount.svg');
+    background-repeat: no-repeat;
+    @include screen-lt(desktop) {
+      right: -15px;
+    }
+  }
+}
+
+.cards {
+  margin-top: 65px;
+  margin-bottom: 90px;
+  @include screen-lt(mobile) {
+    flex-direction: column;
+  }
+}

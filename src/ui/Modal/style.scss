@@ -20,7 +20,7 @@
     width: 350px;
     padding: 20px 40px;
     background-color: $bgDark;
-    border: 1px solid $orange;
+    border: 1px solid $blue;
     z-index: 20;
     display: flex;
     align-items: center;
@@ -35,12 +35,12 @@
     }
   }
   &_close {
-    border: 2px solid $orange;
+    border: 2px solid $blue;
     width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
-    color: $orange;
+    color: $blue;
     top: -20px;
     right: -20px;
     cursor: pointer;
@@ -53,7 +53,7 @@
     padding: 0;
     outline: none;
     &:hover {
-      background-color: #551E00;
+      background-color: #002a7a;
     }
     @include screen-lt(mobile) {
       top: 5px;

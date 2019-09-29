@@ -34,7 +34,7 @@ function renderLink(withLink, login, email, registerBy) {
 }
 
 function UserRow({ user, idx = '№', withLink }) {
-    const { login = '-', clicks = 0, registerBy = '-', email = '-' } = user;
+    const { login = '-', registerBy = '-', email = '-' } = user;
 
     return (
         <Row className={style.admin__row}>
@@ -42,7 +42,6 @@ function UserRow({ user, idx = '№', withLink }) {
             <p className={style.admin__row_item}>{login}</p>
             <p className={style.admin__row_item}>{email}</p>
             <p className={style.admin__row_item}>{registerBy}</p>
-            <p className={style.admin__row_item}>{clicks}</p>
             {renderLink(withLink, login, email, registerBy)}
         </Row>
     );

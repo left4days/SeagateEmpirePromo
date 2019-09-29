@@ -1,18 +1,14 @@
 .title {
   @include base-aligns();
   @include base-margins();
+  @include base-weight();
   color: $white;
-  &__container {
-    h1, h2 {
-      @include main-font(500);
-    }
-  }
   &__size {
     &_l {
-      font-size: 48px;
+      font-size: 72px;
     }
     &_m {
-      font-size: 36px;
+      font-size: 28px;
     }
     &_s {
       font-size:  18px;
@@ -23,7 +19,7 @@
       color: $white;
     }
     &_orange {
-      color: $orange;
+      color: $blue;
     }
   }
 }

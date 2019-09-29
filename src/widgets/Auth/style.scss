@@ -6,7 +6,7 @@
   position: absolute;
   height: 2px;
   width: 110px;
-  background-color: $orange;
+  background-color: $blue;
   @include screen-lt(mobile) {
     width: 90px;
   }
@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid $orange;
+  border: 2px solid $blue;
   border-radius: 50%;
   margin-right: 15px;
   outline: none;
@@ -54,7 +54,7 @@
     }
   }
   &__link {
-    color: $brown;
+    color: $blue;
     text-decoration: underline;
     font-size: 12px;
     margin-left: 5px;

@@ -1,7 +1,14 @@
 .header {
-  background-color: $black;
+  background-color: rgba(16, 28, 46, 0.7);
   color: $white;
-  height: 72px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 80px;
+  @include screen-lt(mobile) {
+    z-index: 4;
+  }
 
   &__container {
     z-index: 4;

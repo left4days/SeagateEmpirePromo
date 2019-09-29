@@ -1,10 +1,8 @@
 import React from 'react';
 import firebase from 'firebase';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import { getAllUrlParams } from './helpers';
 import { getFirebaseHeaderToken } from 'widgets/requestsHelpers';
-import get from 'lodash/get';
 
 const PROVIDERS = {
     google: new firebase.auth.GoogleAuthProvider(),

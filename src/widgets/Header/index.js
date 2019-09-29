@@ -7,7 +7,7 @@ import seagateLogo from 'statics/seagate.svg';
 import logo from 'statics/logo.svg';
 import style from './style.scss';
 
-function Header({ handleModal, user, signOutUser }) {
+function Header({ signOutUser, user }) {
     return (
         <Column className={style.header} ai="center" jc="space-between">
             <Row className={style.header__container}>
@@ -20,7 +20,7 @@ function Header({ handleModal, user, signOutUser }) {
                         <img className={style.header__logo} src={logo} alt="logo" />
                     </Link>
                 </Column>
-                <HeaderAuth handleModal={handleModal} user={user} signOutUser={signOutUser} />
+                <HeaderAuth signOutUser={signOutUser} user={user} />
             </Row>
         </Column>
     );

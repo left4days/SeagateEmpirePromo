@@ -1,5 +1,12 @@
 .admin {
-  background-color: #13023c;
+  background-color: #0F273C;
+  padding-top: 80px;
+  min-height: 100vh;
+  padding-bottom: 120px;
+  &_loading {
+    align-items: center;
+    justify-content: center;
+  }
   &__container {
     @include container-size();
   }
@@ -30,5 +37,6 @@
 
   .ux-button {
     width: auto;
+    height: 40px;
   }
 }

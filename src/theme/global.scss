@@ -1,7 +1,7 @@
 @import "fonts.scss";
 
 $black: #0a0b0a;
-$orange: #ff5100;
+$blue: #3e6ef8;
 $white: #fff;
 $grey: #8b9497;
 $bgDark: #1a1a1a;
@@ -83,8 +83,30 @@ $brown: #484848;
   }
 }
 
+@mixin base-weight() {
+  &__weight {
+    &_500 {
+      font-weight: 500;
+    }
+    &_600 {
+      font-weight: 600;
+    }
+    &_700 {
+      font-weight: 700;
+    }
+    &_800 {
+      font-weight: 800;
+    }
+  }
+}
+
 @mixin main-font($weight) {
   font-family: "Montserrat", sans-serif;
+  font-weight: $weight;
+}
+
+@mixin accent-font($weight) {
+  font-family: "Raleway", sans-serif;
   font-weight: $weight;
 }
 
@@ -111,7 +133,7 @@ a {
 body {
   font-size: 13px;
   @include main-font(500);
-  background-color: #13023c;
+  background-color: #0F273C;
   padding: 0;
   box-sizing: border-box;
   margin: 0;
@@ -125,9 +147,11 @@ body {
 // Responsive settings
 $screenSizes: (
         desktop: 1320px,
+        desktop-small: 1150px,
         tablet: 991px,
         mobile: 768px,
         mobile-small: 480px,
+        mobile-big: 560px,
 );
 
 @mixin screen-gt($name) {
@@ -143,7 +167,7 @@ $screenSizes: (
 }
 
 @mixin container-size() {
-  width: 1320px;
+  width: 1110px;
   margin: auto;
   padding: 0 20px;
   @include screen-lt(desktop) {
