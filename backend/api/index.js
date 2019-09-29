@@ -3,7 +3,7 @@ const router = express.Router();
 const { auth } = require('firebase-admin');
 
 const userApi = require('./user');
-const promoCodeApi = require('./promoCode');
+const promoCodeApi = require('./promocode');
 const appStateApi = require('./appState');
 
 const authService = auth();
