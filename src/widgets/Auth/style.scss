@@ -64,11 +64,13 @@
     &_more {
       text-decoration: underline;
       color: $brown;
-      background-color: transparent;
+      background: transparent;
+      border: none;
       text-transform: none;
       width: auto;
       &:hover {
-        background-color: transparent;
+        background: transparent;
+        border: none;
         color: $white;
         transition: .1s;
       }

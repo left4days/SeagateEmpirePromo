@@ -186,13 +186,24 @@ class Auth extends React.Component {
                     <ErrorText error={error} />
                     <Button
                         className={style.auth__button}
+                        margin={authType !== 'auth' && 'bottom_x2'}
                         type="submit"
                         size="full"
-                        margin="bottom_x2"
                         disabled={!valid}
                     >
                         {getTitle(authType).button}
                     </Button>
+                    {authType === 'auth' && (
+                        <Button
+                            className={style.auth__button}
+                            type="submit"
+                            onClick={() => handleModal('login', null)}
+                            size="full"
+                            margin="bottom_x2"
+                        >
+                            Войти
+                        </Button>
+                    )}
                     <BottomPanel authType={authType} handleModal={handleModal} />
                 </Formsy>
             </Column>

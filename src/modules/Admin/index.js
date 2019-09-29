@@ -132,7 +132,7 @@ class AdminPanel extends React.PureComponent {
     };
 
     render() {
-        const { isUserAdmin, actionState, winners, users, mainWinners } = this.state;
+        const { isUserAdmin, actionState, winners, mainWinners } = this.state;
         const { user } = this.props;
 
         if (user === 'loading' || !isUserAdmin) {
@@ -143,14 +143,6 @@ class AdminPanel extends React.PureComponent {
             );
         }
 
-        // if (!isUserAdmin) {
-        //     return (
-        //         <Column className={style.admin}>
-        //             <Title containerClassName={style.admin__rejected}>You have no permissions to see this page</Title>
-        //         </Column>
-        //     );
-        // }
-
         return (
             <Column className={style.admin}>
                 <Column className={style.admin__container}>
@@ -159,9 +151,6 @@ class AdminPanel extends React.PureComponent {
                         <Button size="m" margin="left" onClick={this.getAllUsers}>
                             Выгрузить полный список участников
                         </Button>
-                        <Row jc="flex-end" className={style['admin__header-summary']}>
-                            <p>Участников: {users}</p>
-                        </Row>
                     </Row>
                     <Column>
                         <Table

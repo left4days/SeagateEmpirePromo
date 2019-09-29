@@ -25,7 +25,7 @@ function SmallCards() {
                             <br /> SIEGE
                         </Title>
                     </Column>
-                    <Button size="full">Купить</Button>
+                    {/*<Button size="full">Купить</Button>*/}
                 </Column>
                 <RenderLabel />
             </Column>
@@ -40,7 +40,7 @@ function SmallCards() {
                             <br /> Series M.2 NVME SSD
                         </Description>
                     </Column>
-                    <Button size="full">Купить</Button>
+                    {/*<Button size="full">Купить</Button>*/}
                 </Column>
             </Column>
             <Column className={cx(style.card, style.card_3)}>
