@@ -21,22 +21,33 @@
 
   &__logo {
     height: 40px;
+    @include screen-lt(mobile) {
+      height: 23px;
+    }
     &_double {
+      align-items: center;
       img {
         &:first-child {
           margin-right: 10px;
         }
       }
       @include screen-lt(tablet) {
-        display: none;
+        img:last-child {
+          display: none;
+        }
+        justify-content: center;
+        align-items: center !important;
       }
     }
     &_container {
       display: flex;
       align-items: center;
-      @include screen-lt(tablet) {
-        align-items: flex-start;
+      @include screen-lt(mobile) {
+        justify-content: center;
       }
+      //@include screen-lt(tablet) {
+      //  align-items: flex-start;
+      //}
     }
   }
 }
