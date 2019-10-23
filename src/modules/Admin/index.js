@@ -7,7 +7,6 @@ import cx from 'classnames';
 
 import { getFirebaseHeaderToken } from 'widgets/requestsHelpers';
 import { Button } from 'ui/Button';
-import { Title } from 'ui/Title';
 import { Row, Column } from 'ui/Layout';
 import { Loader } from 'ui/Loader';
 import { UserRow } from './UserRow';
@@ -71,6 +70,7 @@ class AdminPanel extends React.PureComponent {
             this.getCurrentAppState();
             this.getCurrentWinners();
             this.getCurrentTopWinners();
+            this.getSummaryInfo();
         });
     };
 
@@ -109,6 +109,16 @@ class AdminPanel extends React.PureComponent {
         });
     };
 
+    getSummaryInfo = async () => {
+        const options = await getFirebaseHeaderToken();
+        axios.get('/api/v1/users/list', options).then(res => {
+            const { data } = get(res, 'data', false);
+            if (data) {
+                this.setState({ users: data.length });
+            }
+        });
+    };
+
     switchAppState = async currentState => {
         const { actionState } = this.state;
         const options = await getFirebaseHeaderToken();
@@ -132,7 +142,7 @@ class AdminPanel extends React.PureComponent {
     };
 
     render() {
-        const { isUserAdmin, actionState, winners, mainWinners } = this.state;
+        const { isUserAdmin, actionState, winners, mainWinners, users } = this.state;
         const { user } = this.props;
 
         if (user === 'loading' || !isUserAdmin) {
@@ -142,7 +152,6 @@ class AdminPanel extends React.PureComponent {
                 </Column>
             );
         }
-
         return (
             <Column className={style.admin}>
                 <Column className={style.admin__container}>
@@ -151,6 +160,9 @@ class AdminPanel extends React.PureComponent {
                         <Button size="m" margin="left" onClick={this.getAllUsers}>
                             Выгрузить полный список участников
                         </Button>
+                        <Row jc="flex-end" className={style['admin__header-summary']}>
+                            <p>Участников: {users}</p>
+                        </Row>
                     </Row>
                     <Column>
                         <Table

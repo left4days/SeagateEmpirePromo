@@ -35,7 +35,10 @@ $btn-fill: transparent, $white, #ff510047, $white, transparent, $white, $grey, $
   @include base-sizes();
   @include base-margins();
   height: 27px;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  display: flex;
   font-size: 12px;
   border-radius: 5px;
   border: 2px solid #065baa;

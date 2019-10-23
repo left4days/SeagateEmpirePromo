@@ -156,6 +156,21 @@ class UserService {
         return await Promise.all(winnerList.map(uid => this.getUserById(uid)));
     }
 
+    async listAllUsers() {
+        let users = [];
+        try {
+            await userRef.once('value', snapshot => {
+                users = Object.keys(snapshot.val());
+            });
+        } catch (err) {
+            console.log('ERROR DB GET ALL_USERS');
+            console.log(err);
+
+            return [];
+        }
+        return await Promise.all(users);
+    }
+
     async getTopWinners(params) {
         const { limit = 1 } = params;
         let mainWinners = [];

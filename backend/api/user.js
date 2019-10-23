@@ -32,6 +32,12 @@ async function getTopWinners(req, res) {
     res.json({ success: true, data: users });
 }
 
+async function allUsers(req, res) {
+    const users = await userService.listAllUsers(req.params);
+
+    res.json({ success: true, data: users });
+}
+
 async function generateWinners(req, res) {
     const users = await userService.generateWinners(req.params);
 
@@ -62,6 +68,7 @@ module.exports = {
     GET: [
         ['/api/v1/user/:userId', getUserData],
         ['/api/v1/users', requiresAdmin, getAllUsers],
+        ['/api/v1/users/list', requiresAdmin, allUsers],
         ['/api/v1/user/winners/:limit', requiresAdmin, getWinners],
         ['/api/v1/user/winners/top/:limit', requiresAdmin, getTopWinners],
         ['/api/v1/user/winners/create/:limit', requiresAdmin, generateWinners],

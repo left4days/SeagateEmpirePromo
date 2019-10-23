@@ -44,7 +44,10 @@
       background-image: url('../../../../statics/image_1card_.png');
       width: 100%;
       height: calc(100% + 30px);
-      top: -30px;
+      top: -14px;
+      @include screen-lt(desktop-small) {
+        top: -30px;
+      }
     }
     .card__content {
       margin-left: 35%;
