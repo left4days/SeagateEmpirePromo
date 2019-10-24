@@ -5,6 +5,9 @@
   &__input {
     width: 60%;
     overflow: hidden;
+    @include screen-lt(mobile) {
+      width: 100%;
+    }
     &_valid {
       .ux-input {
         border: 2px solid #0abf06 !important;
@@ -76,5 +79,6 @@
   }
   &__winner {
     margin-top: 20px;
+    flex-wrap: wrap-reverse;
   }
 }
